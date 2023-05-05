@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"/>
+    <link rel="icon" href="{{ asset('images/icons/favicon.png') }}" type="image/svg+xml">
+    <link rel="manifest" href="{{ asset('manifest.json') }}" crossorigin="use-credentials">
+    <title>{% block title 'common.baseline'|trans %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}" />
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="{{ asset('build/js/popper.min.js') }}"></script>
+        <script src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+  </head>
+  <body>
+    {% set currentRouteName = app.request.get('_route') %}
+    {% set isHeaderBgPrimary = currentRouteName  == 'app_shoppinglists' %}
+
+    <div class="appHeader {% if isHeaderBgPrimary %} bg-primary text-light{% endif %}">
+        <div class="left">{% block navLeft %}{% endblock %}</div>
+        <div class="pageTitle">{% block navTitle %}{{ 'common.title'|trans }}{% endblock %}</div>
+        <div class="right">{% block navRight %}{% endblock %}</div>
+    </div>
+    <div id="appCapsule" class="{% block appCapsuleClass %}{% endblock %}">{% block body %}{% endblock %}</div>
+  </body>
+</html>
