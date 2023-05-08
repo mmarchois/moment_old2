@@ -6,8 +6,6 @@ namespace App\Domain\User;
 
 class User
 {
-    private iterable $shoppingLists = [];
-
     public function __construct(
         private string $uuid,
         private string $firstName,
@@ -40,10 +38,5 @@ class User
     public function getPassword(): string
     {
         return $this->password;
-    }
-
-    public function getShoppingLists(): iterable
-    {
-        return $this->shoppingLists;
     }
 }
