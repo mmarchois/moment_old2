@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 {% block title %}{{ 'login.meta.title'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
@@ -12,7 +12,7 @@
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
-        <form action="{{ path('app_login') }}" method="post">
+        <form action="{{ path('admin_login') }}" method="post">
             <div class="card">
                 <div class="card-body pb-1">
                     <div class="form-group basic">
@@ -31,7 +31,7 @@
             </div>
             <div class="form-links mt-2">
                 <div>
-                    <a href="{{ path('app_register') }}">{{ 'login.register'|trans }}</a>
+                    <a href="{{ path('admin_register') }}">{{ 'login.register'|trans }}</a>
                 </div>
                 <div>
                     <a href="#" class="text-muted">{{ 'login.forgot_password'|trans }}</a>
@@ -40,7 +40,7 @@
             <div class="mt-2">
                 <button type="submit" class="btn btn-primary btn-block btn-lg">{{ 'login.submit'|trans }}</button>
             </div>
-            <input type="hidden" name="_target_path" value="{{ path('app_shoppinglists') }}">
+            <input type="hidden" name="_target_path" value="{{ path('admin_dashboard') }}">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         </form>
     </div>

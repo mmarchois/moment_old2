@@ -1,7 +1,8 @@
 controllers:
-    resource: ../src/Infrastructure/Controller/
+    resource: ../src/Infrastructure/Controller/Admin
     type: attribute
+    prefix: /admin
 
-app_logout:
-    path: /auth/logout
+admin_logout:
+    path: /admin/auth/logout
     methods: GET

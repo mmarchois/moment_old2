@@ -20,9 +20,8 @@
   </head>
   <body>
     {% set currentRouteName = app.request.get('_route') %}
-    {% set isHeaderBgPrimary = currentRouteName  == 'app_shoppinglists' %}
 
-    <div class="appHeader {% if isHeaderBgPrimary %} bg-primary text-light{% endif %}">
+    <div class="appHeader">
         <div class="left">{% block navLeft %}{% endblock %}</div>
         <div class="pageTitle">{% block navTitle %}{{ 'common.title'|trans }}{% endblock %}</div>
         <div class="right">{% block navRight %}{% endblock %}</div>

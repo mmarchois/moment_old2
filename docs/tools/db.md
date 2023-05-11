@@ -11,44 +11,60 @@ direction LR
 
 class User {
     uuid*: uuid
-    firstName: varchar[100]
-    lastName: varchar[100]
-    email: varchar[255]
-    password: varchar[255]
+    firstName*: varchar[100]
+    lastName*: varchar[100]
+    email*: varchar[255]
+    password*: varchar[255]
 }
 
-class ShoppingList {
+class Event {
     uuid*: uuid
-    name: varchar[100]
+    name*: varchar[100]
+    fromDate*: datetime
+    toDate*: datetime
 }
 
-class ShoppingCategory {
+class Category {
     uuid*: uuid
-    name: varchar[100]
-    position: integer
+    title*: varchar[50]
+    fromDate*: datetime
+    toDate*: datetime
 }
 
-class ShoppingItem {
+class Like {
     uuid*: uuid
-    name: varchar[100]
-    bought: boolean
-    quantity: integer
-    comment?: varchar[255]
-    unit?: varchar[5]
-    price?: integer
 }
 
-class Card {
+class Comment {
     uuid*: uuid
-    code: varchar[100]
-    name: varchar[100]
+    content*: varchar[255]
+    createdAt*: datetime
 }
 
-User "1..N" -- "1..1" ShoppingList
-User "1..N" -- "1..N" ShoppingList: user_shoppinglist
-ShoppingList "1..N" -- "1..1" ShoppingItem
-ShoppingItem "1..1" -- "1..N" ShoppingCategory
-Card "1..1" -- "1..N" User
+class Participant {
+    uuid*: uuid
+    firstName*: varchar[100]
+    lastName*: varchar[100]
+    phoneNumber*: varchar[20]
+    voucher*: varchar[255]
+}
+
+class Media {
+    uuid*: uuid
+    file*: varchar[155]
+    createdAt*: datetime
+}
+
+User "1..N" -- "1..1" Event
+Event "1..N" -- "1..1" Category
+Event "1..N" -- "1..1" Participant
+Media "0..1" -- "0..N" Category
+Media "1..1" -- "1..N" Participant
+Media "1..1" -- "1..N" Event
+Media "1..1" -- "1..N" Comment
+Media "1..N" -- "1..1" Like
+Media "1..1" -- "1..N" Participant
+Comment "1..1" -- "1..N" Participant
 ```
 
 ## Connexion

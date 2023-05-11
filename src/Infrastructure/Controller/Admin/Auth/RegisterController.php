@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Controller\Auth;
+namespace App\Infrastructure\Controller\Admin\Auth;
 
 use App\Application\CommandBusInterface;
 use App\Application\User\Command\RegisterUserCommand;
@@ -31,7 +31,7 @@ final class RegisterController
     ) {
     }
 
-    #[Route('/auth/register', name: 'app_register', methods: ['GET', 'POST'])]
+    #[Route('/auth/register', name: 'admin_register', methods: ['GET', 'POST'])]
     public function __invoke(Request $request): Response
     {
         $command = new RegisterUserCommand();
@@ -45,7 +45,7 @@ final class RegisterController
                 $this->security->login(new SymfonyUser($user));
 
                 return new RedirectResponse(
-                    url: $this->router->generate('app_shoppinglists'),
+                    url: $this->router->generate('admin_dashboard'),
                     status: Response::HTTP_SEE_OTHER,
                 );
             } catch (UserAlreadyRegisteredException) {
@@ -57,7 +57,7 @@ final class RegisterController
 
         return new Response(
             content: $this->twig->render(
-                name: 'auth/register.html.twig',
+                name: 'admin/auth/register.html.twig',
                 context: [
                     'form' => $form->createView(),
                 ],

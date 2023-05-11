@@ -24,6 +24,5 @@ final class UserTest extends TestCase
         $this->assertSame('MARCHOIS', $user->getLastName());
         $this->assertSame('mathieu.marchois@gmail.com', $user->getEmail());
         $this->assertSame('password', $user->getPassword());
-        $this->assertSame([], $user->getShoppingLists()); // Set by Doctrine
     }
 }
