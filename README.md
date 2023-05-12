@@ -1,8 +1,7 @@
 # Moment.
 
 [![CI](https://github.com/mmarchois/moment/actions/workflows/ci.yml/badge.svg)](https://github.com/mmarchois/moment/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/mmarchois/moment/branch/main/graph/badge.svg?token=q79Foe8xkl)](https://codecov.io/gh/mmarchois/moment)
-
+[![codecov](https://codecov.io/gh/mmarchois/moment/branch/main/graph/badge.svg?token=0SAB0QSV5K)](https://codecov.io/gh/mmarchois/moment)
 
 ## Environnement technique
 
