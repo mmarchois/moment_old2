@@ -5,13 +5,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      meilisearch:
-        image: getmeili/meilisearch:v1.1
-        ports:
-          - '7700:7700'
-        env:
-          MEILI_MASTER_KEY: moment
-
       postgresql:
         image: postgres:15.2-alpine
         env:

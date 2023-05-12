@@ -7,4 +7,3 @@ Table des matières :
 - [Qualité](./quality.md)
 - [Base de données](./db.md)
 - [Docker](./docker.md)
-- [Moteur de recherche](./search.md)

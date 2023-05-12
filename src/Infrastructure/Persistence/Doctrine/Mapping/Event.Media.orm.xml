@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Domain\Event\Media" table="media">
+    <id name="uuid" type="guid" column="uuid"/>
+    <field name="file" type="string" column="file" nullable="false"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false"/>
+    <many-to-one field="event" target-entity="App\Domain\Event\Event" fetch="LAZY">
+        <join-columns>
+            <join-column name="event_uuid" referenced-column-name="uuid" nullable="false" on-delete="CASCADE"/>
+        </join-columns>
+    </many-to-one>
+    <many-to-one field="participant" target-entity="App\Domain\Event\Participant" fetch="LAZY">
+        <join-columns>
+            <join-column name="participant_uuid" referenced-column-name="uuid" nullable="false" on-delete="CASCADE"/>
+        </join-columns>
+    </many-to-one>
+    <many-to-one field="category" target-entity="App\Domain\Event\Category" fetch="LAZY">
+        <join-columns>
+            <join-column name="category_uuid" referenced-column-name="uuid" on-delete="SET NULL"/>
+        </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

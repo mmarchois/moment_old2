@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Domain\Event;
 
-final class User
+final class Participant
 {
     public function __construct(
         private string $uuid,
         private string $firstName,
         private string $lastName,
-        private string $email,
-        private string $password,
+        private string $phoneNumber,
+        private string $voucher,
+        private Event $event,
     ) {
     }
 
@@ -30,13 +31,18 @@ final class User
         return $this->lastName;
     }
 
-    public function getEmail(): string
+    public function getPhoneNumber(): string
     {
-        return $this->email;
+        return $this->phoneNumber;
     }
 
-    public function getPassword(): string
+    public function getVoucher(): string
     {
-        return $this->password;
+        return $this->voucher;
+    }
+
+    public function getEvent(): Event
+    {
+        return $this->event;
     }
 }
